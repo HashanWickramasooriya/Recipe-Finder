@@ -265,7 +265,7 @@ export const africaRecipes2: Recipe[] = [
     cuisine: "Kenyan",
     region: "Africa",
     description: "Collard greens sautéed with onion and tomato, an everyday Kenyan side dish whose name literally means 'stretch the week'.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/48/Ugali_%26_Sukuma_Wiki.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e7/Sukuma_Kenya.jpg/500px-Sukuma_Kenya.jpg",
     imageAlt: "Sukuma wiki greens with ugali",
     imageAttribution: "Wikimedia Commons",
     mealType: ["lunch", "dinner"],

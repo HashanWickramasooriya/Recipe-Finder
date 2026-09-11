@@ -630,7 +630,7 @@ export const asiaRecipes2: Recipe[] = [
     cuisine: "Thai (Isan)",
     region: "Asia",
     description: "A zesty minced meat salad from Northeastern Thailand, sharpened with lime, fish sauce, and toasted rice powder.",
-    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/LaoFood_LarbNeua.JPG/960px-LaoFood_LarbNeua.JPG",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6d/Lap_mu.JPG/500px-Lap_mu.JPG",
     imageAlt: "Larb minced meat salad with herbs",
     imageAttribution: "Wikimedia Commons",
     mealType: ["lunch"],

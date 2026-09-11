@@ -15,7 +15,7 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border border-cream-200 bg-white shadow-card transition-shadow hover:shadow-card-hover dark:border-ink-700 dark:bg-ink-800">
-      <Link to={`/recipes/${recipe.id}`} className="block">
+      <Link to={`/recipes/${recipe.id}`} className="flex flex-1 flex-col">
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-cream-100 dark:bg-ink-700">
           <RecipeImage
             src={recipe.image}
@@ -26,31 +26,29 @@ export function RecipeCard({ recipe }: RecipeCardProps) {
             {recipe.country}
           </span>
         </div>
+        <div className="flex flex-1 flex-col gap-2 p-4">
+          <h3 className="font-display text-lg font-medium leading-snug text-ink-900 group-hover:text-clay-600 dark:text-cream-100 dark:group-hover:text-clay-300">
+            {recipe.name}
+          </h3>
+          <p className="line-clamp-2 text-sm text-ink-700/80 dark:text-cream-200/70">
+            {recipe.description}
+          </p>
+          <div className="mt-auto flex items-center gap-3 pt-2 text-xs text-ink-700/70 dark:text-cream-200/60">
+            <span className="inline-flex items-center gap-1">
+              <ClockIcon />
+              {formatMinutes(totalTime)}
+            </span>
+            <span className="inline-flex items-center gap-1 capitalize">
+              <DifficultyIcon />
+              {t(`filters.difficulty.${recipe.difficulty}`)}
+            </span>
+          </div>
+        </div>
       </Link>
       <FavoriteButton
         recipeId={recipe.id}
         className="absolute right-3 top-3 z-10"
       />
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <Link to={`/recipes/${recipe.id}`} className="block">
-          <h3 className="font-display text-lg font-medium leading-snug text-ink-900 group-hover:text-clay-600 dark:text-cream-100 dark:group-hover:text-clay-300">
-            {recipe.name}
-          </h3>
-        </Link>
-        <p className="line-clamp-2 text-sm text-ink-700/80 dark:text-cream-200/70">
-          {recipe.description}
-        </p>
-        <div className="mt-auto flex items-center gap-3 pt-2 text-xs text-ink-700/70 dark:text-cream-200/60">
-          <span className="inline-flex items-center gap-1">
-            <ClockIcon />
-            {formatMinutes(totalTime)}
-          </span>
-          <span className="inline-flex items-center gap-1 capitalize">
-            <DifficultyIcon />
-            {t(`filters.difficulty.${recipe.difficulty}`)}
-          </span>
-        </div>
-      </div>
     </div>
   );
 }

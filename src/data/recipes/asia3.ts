@@ -573,7 +573,7 @@ export const asiaRecipes3: Recipe[] = [
     cuisine: "Afghan",
     region: "Asia",
     description: "Steamed dumplings filled with spiced minced beef and onion, topped with a garlicky yogurt sauce and tomato-lentil topping.",
-    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Kayseride_bir_restoranda_Kayseri_mant%C4%B1s%C4%B1_%28cropped%29.jpg/960px-Kayseride_bir_restoranda_Kayseri_mant%C4%B1s%C4%B1_%28cropped%29.jpg",
+    image: "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Mantu_%284415169109%29.jpg/500px-Mantu_%284415169109%29.jpg",
     imageAlt: "Steamed mantu dumplings with yogurt sauce",
     imageAttribution: "Wikimedia Commons",
     mealType: ["dinner"],

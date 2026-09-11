@@ -5,7 +5,7 @@ import { getRecipeById, getRelatedRecipes } from "../data/recipes";
 import { RecipeImage } from "../components/RecipeImage";
 import { FavoriteButton } from "../components/FavoriteButton";
 import { RecipeCard } from "../components/RecipeCard";
-import { formatMinutes } from "../lib/format";
+import { formatMinutes, scaleIngredient } from "../lib/format";
 import { useRecentlyViewedStore } from "../store/useRecentlyViewedStore";
 import { useShoppingListStore } from "../store/useShoppingListStore";
 import { useDocumentTitle } from "../lib/useDocumentTitle";
@@ -25,6 +25,12 @@ export default function RecipeDetail() {
   const [cookingMode, setCookingMode] = useState(false);
   const [shareCopied, setShareCopied] = useState(false);
   const [addedToList, setAddedToList] = useState(false);
+  const [lastRecipeId, setLastRecipeId] = useState(recipe?.id);
+
+  if (recipe && recipe.id !== lastRecipeId) {
+    setLastRecipeId(recipe.id);
+    setServings(recipe.servings);
+  }
 
   useEffect(() => {
     if (recipe) addRecent(recipe.id);
@@ -34,6 +40,8 @@ export default function RecipeDetail() {
 
   const related = getRelatedRecipes(recipe);
   const totalTime = recipe.prepTimeMinutes + recipe.cookTimeMinutes;
+  const servingsRatio = servings / recipe.servings;
+  const scaledIngredients = recipe.ingredients.map((ing) => scaleIngredient(ing, servingsRatio));
 
   function toggleIngredient(i: number) {
     setCheckedIngredients((prev) => {
@@ -69,7 +77,7 @@ export default function RecipeDetail() {
   }
 
   function handleAddToShoppingList() {
-    addItems(recipe!.name, recipe!.ingredients);
+    addItems(recipe!.name, scaledIngredients);
     setAddedToList(true);
     setTimeout(() => setAddedToList(false), 2000);
   }
@@ -186,7 +194,7 @@ export default function RecipeDetail() {
             {t("recipe.checkAllIngredients")}
           </p>
           <ul className="mt-4 space-y-2">
-            {recipe.ingredients.map((ing, i) => (
+            {scaledIngredients.map((ing, i) => (
               <li key={i}>
                 <label className="flex cursor-pointer items-start gap-3 rounded-lg px-2 py-1.5 hover:bg-cream-100 dark:hover:bg-ink-800">
                   <input
